@@ -1,0 +1,27 @@
+{%  extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container d-flex justify-content-center mt-5">
+    <div class='container d-flex justify-content-center mt-5'>
+
+        <div class="mt-5">.</div>
+    <div class="mt-5 position-absolute m-5">
+
+        <img class="rounded-circle" src="{{ c.image.url}}" alt="">
+        <h1>  {{c.user}} </h1>
+        {{request.user.email}}
+    </div>
+</div>
+<div class="mt-5">.</div>
+    <div class="mt-5 position-absolute bottom-0  d-flex justify-content-center ">
+
+        <form action="" method='post' enctype="multipart/form-data">
+            {% csrf_token %}
+            {{a.as_p}}
+            <input type="submit" value="update" class="btn btn-outline-info">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

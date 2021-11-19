@@ -1,0 +1,71 @@
+{%  extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+
+{% block content %}
+<style>
+    .homeall{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+    ::-webkit-scrollbar{
+        display: none;
+    }
+</style>
+<div class="mt-3">.</div>
+<div class=" homeall d-flex flex-row mt-5">
+    <div class="container ml-4">
+        <div class="p-3 mb-2 text-white rounded" style="height: 90vh;width: 100%;background-color: olive;">
+        <div class="p-3 text-white mb-2 rounded" style="background-color: rgb(251, 251, 251);" >
+            
+            <h1 style="font-size: larger;font-family: Verdana, Geneva, Tahoma, sans-serif;color: darkslategray;" class="text-break">{{a.description}}</h1>
+            
+        </div>
+        <br>
+        <div class="p-3 mb-2   text-white text-center  overflow-auto p-5 m-1" style="height: 60%;border-radius: 5vh;background-color: papayawhip;">
+            {% for i in b %}
+            <div class="  p-1 rounded-pill "  >
+             <p style="color: black;font-family: monospace;" class="text-break">   {{i.user}} :  -  {{i.body}}</p>
+            </div>
+            <hr style="color: darkslategrey;">
+            
+            {% endfor %}
+        </div>
+        <div>
+            {% if request.user.is_authenticated %}
+            <form action="" method="post" >
+                {% csrf_token %}
+                <input type="text" name='body' class="form-control">
+                <br>
+                <input type="submit" value="submit" class="btn btn-success">
+            </form>
+            {% endif %}
+        </div>
+    </div>
+   
+
+    </div>
+    <div class="container p-3 mb-2 mt-5 text-white   rounded" style="background-color: blueviolet;width: 20%;height: 30%;">
+        
+        
+        
+        
+        <div class='d-flex justify-content-center mt-5'  >
+            <div class="media">
+                <div class="">
+                    <div>
+                        <img class="rounded-circle" src="{{profile.image.url}}" alt="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-center ">{{a.host}}</h1>
+        
+        
+    </div>
+
+</div>
+{% endblock %}

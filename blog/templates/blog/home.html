@@ -1,0 +1,92 @@
+{%  extends 'base.html' %}
+{% block content %}
+<div class="overflow-auto" >
+<style>
+    .sticky {
+     /* Safari */
+    
+    position: absolute;
+    
+    left: 70%;
+    
+    
+  }
+  ::-webkit-scrollbar{
+        display: none;
+    }
+    
+</style>
+<div class="mt-2">.</div>
+<nav class="navbar  navbar-dark  mt-5 " style="background-color: #1d2b48;">
+<a href="{% url 'home' %}"  style="text-decoration: none;color: aliceblue;" ><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-house-fill m-3" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+  </svg> </a>
+{% for i in room %}
+
+<h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" class="p-2"><a href="{% url 'home' %}?q={{i}}"  style="text-decoration: none;color: aliceblue;"> {{i.name}}</a></h1>
+<hr>
+   
+
+{% endfor %}
+</nav>
+
+
+<div class="container mt-2 ">
+    <div >
+        <div >
+            <div >
+                {% for i in a %}
+                <div style="background-color: aliceblue;">
+                
+                {% for j in p %}
+                {% if i.host == j.user%}
+                <div>
+                <img class="rounded-circle m-2" style="width: 10%;height: 10%;" src="{{ j.image.url }}" alt="">
+                
+            </div>
+                {% endif %}
+
+                {% endfor %}
+                <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" ><p class="badge bg-secondary m-2"> {{i.host}}</p></p>
+                <div class="d-flex justify-content-center " >
+                <h1 class="mb-3 p-2"  style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;position: relative;top: 0;" ><a href="{% url 'room_page' i.id %}"  style="text-decoration: none;color: black;text-align: center; " class="text-break"> {{i.name}}</a></h1>
+                
+
+                
+                <div class="sticky">
+                    <div class="fs-5 ">
+                    {% if request.user == i.host %}
+                    
+                    <a style="text-decoration: none;" href="{% url 'edit' i.id %}">Edit</a>
+                    
+                    <a style="text-decoration: none;" href="{% url 'delete' i.id %}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            
+
+
+                
+            </div>
+            <hr>
+            <div class=" container p-3 overflow-auto">
+
+            <p style="text-align: justify;" class="text-break">{{i.description}}</p>
+                </div>
+            </div>
+                <hr>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+{% endblock %}
+    

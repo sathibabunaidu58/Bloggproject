@@ -1,0 +1,25 @@
+{%  extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="m-5">.</div>
+<div class="m-5">.</div>
+<div>
+    <div class="d-flex justify-content-center mt-4">
+    <form action="" method='post'>
+    {% csrf_token %}
+    
+    <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Are You Sure. You Want To Delete THis Page ?</h1>
+    <div class='d-flex justify-content-center' >
+    <img class="" src="https://img.icons8.com/external-sbts2018-mixed-sbts2018/300/000000/external-robot-valentines-day-sbts2018-mixed-sbts2018.png"/>
+  
+    </div>
+
+<br>
+<div class='d-flex justify-content-center' >
+<input type="submit" class="btn btn-outline-danger " value="Delete">
+</div>
+</form>
+</div>
+</div>
+{% endblock %}

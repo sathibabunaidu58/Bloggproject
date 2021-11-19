@@ -1,0 +1,21 @@
+{%  extends 'base.html' %}
+{% block content %}
+<div class="mt-5">.</div>
+<div class=" d-flex justify-content-center mt-5">
+    <div class="alert alert-primary" role="alert">
+    <form action="" method='post'>
+        {% csrf_token %}
+        <label for="mail">Email</label>
+        <br>
+        <input type="text" name="email" id="mail">
+        <br>
+        <label for="ps">Password</label>
+        <br>
+        <input type="password" name="password" id="ps">
+        <br>
+        <input type="submit"  value='submit' class="btn btn-outline-success">
+    </form>
+</div>
+</div>
+
+{% endblock %}
